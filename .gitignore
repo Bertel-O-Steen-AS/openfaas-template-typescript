@@ -1,0 +1,5 @@
+.idea/
+
+function/*.js
+function/*.d.ts
+function/*.js.map
