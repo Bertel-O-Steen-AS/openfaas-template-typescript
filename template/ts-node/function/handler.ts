@@ -1,4 +1,4 @@
-export const main = async (event, context, callback) => {
+export const handler = async (event, context, callback) => {
   const result = {
     'status': 'Received input: ' + JSON.stringify(event.body)
   };
