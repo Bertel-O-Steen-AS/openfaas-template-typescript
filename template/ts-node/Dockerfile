@@ -15,7 +15,8 @@ WORKDIR /root/
 # Turn down the verbosity to default level.
 ENV NPM_CONFIG_LOGLEVEL warn
 
-RUN mkdir -p /home/app
+RUN mkdir -p /home/app/function
+RUN chmod 777 /home/app/function
 
 # Wrapper/boot-strapper
 WORKDIR /home/app
