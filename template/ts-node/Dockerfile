@@ -37,8 +37,7 @@ COPY tsconfig.json ./
 
 WORKDIR /home/app/function
 
-COPY function/*.json ./
-COPY function/.npmrc ./
+COPY --chown=app:app function/*.json function/.npmrc* ./
 
 RUN npm i || :
 
