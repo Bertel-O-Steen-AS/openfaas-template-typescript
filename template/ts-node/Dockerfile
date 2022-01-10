@@ -10,6 +10,8 @@ RUN chmod +x /usr/bin/fwatchdog
 RUN apk --no-cache add curl ca-certificates \
     && addgroup -S app && adduser -S -g app app
 
+RUN apk add --update --no-cache bash g++ make py-pip 
+
 WORKDIR /root/
 
 # Turn down the verbosity to default level.
