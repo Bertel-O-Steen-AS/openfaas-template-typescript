@@ -1,14 +1,13 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} openfaas/of-watchdog:0.7.2 as watchdog
 FROM --platform=${TARGETPLATFORM:-linux/amd64} node:lts-alpine as ship
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
-COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
-RUN chmod +x /usr/bin/fwatchdog
-
 RUN apk --no-cache add curl ca-certificates \
-    && addgroup -S app && adduser -S -g app app
+    && curl -sSLf https://github.com/openfaas/of-watchdog/releases/download/0.7.2/of-watchdog > /usr/bin/fwatchdog \
+    && chmod +x /usr/bin/fwatchdog
+
+RUN addgroup -S app && adduser -S -g app app
 
 RUN apk add --update --no-cache bash g++ make py-pip 
 
